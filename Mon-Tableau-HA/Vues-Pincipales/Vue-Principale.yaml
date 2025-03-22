@@ -1,0 +1,514 @@
+title: Principale
+path: Vue-principale
+icon: mdi:home-account
+theme: !include ../Cartes/Carte-Theme.yaml
+subview: false
+type: sections
+max_columns: 2
+cards: []
+sections:
+  - type: grid
+    cards:
+      - type: heading
+        heading: "Météo "
+        heading_style: subtitle
+        icon: mdi:weather-partly-rainy
+        entities:
+          - show_state: true
+            show_icon: true
+            entity: sensor.tempest_st_00032986_temperature
+            color: red
+
+      - !include ..//Cartes/Carte-Meteo-page-principale.yaml
+      
+      - type: heading
+        heading: Personnes
+        heading_style: subtitle
+        icon: mdi:account
+
+      - type: tile
+        entity: person.valerie
+        show_entity_picture: true
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+        tap_action:
+         action: fire-dom-event
+         browser_mod:
+           service: browser_mod.popup
+           data:
+             title: Valérie
+             content:
+               type: entities
+               entities:
+                 - !include ../Cartes-Pop-Up/PopUp-Personne-Valerie.yaml
+      - type: tile
+        entity: person.brigitte
+        show_entity_picture: true
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+        tap_action:
+         action: fire-dom-event
+         browser_mod:
+           service: browser_mod.popup
+           data:
+             title: Brigitte
+             content:
+               type: entities
+               entities:
+                 - !include ../Cartes-Pop-Up/PopUp-Personne-Brigitte.yaml
+      - type: tile
+        entity: person.claude
+        show_entity_picture: true
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+        tap_action:
+         action: fire-dom-event
+         browser_mod:
+           service: browser_mod.popup
+           data:
+             title: Claude
+             content:
+               type: entities
+               entities:
+                 - !include ../Cartes-Pop-Up/PopUp-Personne-Claude.yaml
+      - type: tile
+        entity: person.michel
+        show_entity_picture: true
+        vertical: false
+        tap_action:
+         action: fire-dom-event
+         browser_mod:
+           service: browser_mod.popup
+           data:
+             title: Michel
+             content:
+               type: entities
+               entities:
+                 - !include ../Cartes-Pop-Up/PopUp-Personne-Michel.yaml
+
+      - type: heading
+        icon: mdi:lightbulb
+        heading: Éclairages
+        heading_style: subtitle
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+
+      - type: tile
+        entity: light.salon
+        name: Salon
+        icon: hue:beyond-down-group
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+        color: orange
+      - type: tile
+        entity: light.govee_salon
+        name: Télé Govee
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+        color: light-green
+      - type: tile
+        entity: light.brilliant_diner_table
+        name: Table
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+        color: blue-grey
+      - type: tile
+        entity: light.neviweb130_light_cuisine
+        name: Cuisine
+        color: light-blue
+      - type: tile
+        entity: light.exterieure_avant
+        name: Extérieur avant
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+        color: yellow
+      - type: tile
+        entity: light.neviweb130_light_galerie_arriere
+        name: Extérieure arrière
+        icon: hue:ceiling-fugato-two-alt
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+        color: orange
+        
+  - type: grid
+    cards:
+
+      - type: heading
+        heading_style: subtitle
+        heading: Agenda
+        icon: mdi:calendar-month-outline
+
+      - type: custom:calendar-card-pro
+        entities:
+          - entity: calendar.michel
+            color: cyan
+          - entity: calendar.anniversaires
+            color: red
+          - entity: calendar.sports
+            color: orange
+        days_to_show: 7
+        max_events_to_show: 2
+        tap_action:
+          action: expand
+
+      - type: heading
+        icon: mdi:heat-wave
+        heading: Chauffage
+        heading_style: subtitle
+        entities:
+          - show_state: true
+            show_icon: true
+            entity: sensor.netatmo_exterieur_temperature
+            color: red
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+      - type: tile
+        entity: climate.cuisine
+        layout_options:
+          grid_columns: 2
+          grid_rows: 3
+        features:
+          - type: target-temperature
+          - type: climate-hvac-modes
+      - features:
+          - type: target-temperature
+          - type: climate-hvac-modes
+        type: tile
+        entity: climate.salle_de_repos
+        layout_options:
+          grid_columns: 2
+          grid_rows: 3
+          
+      - type: heading
+        icon: mdi:cctv
+        heading: Caméras
+        heading_style: subtitle
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+      - type: tile
+        entity: alarm_control_panel.blink_ca_exterieures
+        show_entity_picture: true
+        name: Extérieure
+        features_position: inline
+        vertical: false
+        features:
+          - type: alarm-modes
+        layout_options:
+          grid_columns: 4
+          grid_rows: 1
+      - features:
+          - type: alarm-modes
+        type: tile
+        entity: alarm_control_panel.blink_ca_interieures
+        show_entity_picture: true
+        name: Intérieure
+        features_position: inline
+        vertical: false
+        layout_options:
+          grid_columns: 4
+          grid_rows: 1
+          
+badges:
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    entity: weather.shawinigan_previsions
+    name: Prévisons
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: À venir
+          content:
+            type: entities
+            entities:
+              - !include ../Cartes-Pop-Up/PopUp-Previsions.yaml
+
+  - type: entity
+    entity: sensor.tempest_st_00032986_wind_speed
+    name: Vent
+    display_type: complete
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Vent
+          content:
+            type: entities
+            entities:
+              - !include ../Cartes-Pop-Up/PopUp-Rose-Des-Vents.yaml
+              
+  - type: custom:mushroom-template-badge
+    content: "{{states('sensor.tempest_st_00032986_rain_today')}} mm"
+    icon: mdi:weather-rainy
+    color: blue
+    entity: sensor.tempest_st_00032986_rain_today
+    label: "{{states('sensor.tempest_st_00032986_rain_intensity')}} "
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Pluie et taux
+          content:
+            type: entities
+            entities:
+              - !include ../Cartes-Pop-Up/PopUp-Pluie.yaml
+  - type: entity
+    entity: sensor.soleil_lever
+    display_type: complete
+    name: Soleil
+    visibility:
+      - condition: state
+        entity: sun.sun
+        state: below_horizon
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Soleil Lune
+          content:
+            type: entities
+            entities:
+              - !include ../Cartes-Pop-Up/PopUp-Horizon.yaml
+  - type: entity
+    entity: sensor.soleil_coucher
+    name: Soleil
+    display_type: complete
+    visibility:
+      - condition: state
+        entity: sun.sun
+        state: above_horizon
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Soleil Lune
+          content:
+            type: entities
+            entities:
+              - !include ../Cartes-Pop-Up/PopUp-Horizon.yaml
+  - type: entity
+    entity: sensor.phases_de_la_lune # sensor.moon_phase
+    show_entity_picture: true
+    name: Phases de la lune
+    display_type: complete
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Phases de la lune
+          content:
+            type: entities
+            entities:
+              - !include ../Cartes-Pop-Up/PopUp-Phases-Lune.yaml
+  - type: entity
+    entity: sensor.saison_courante
+    display_type: complete
+    show_entity_picture: true
+    name: Saison
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Saison
+          content:
+            type: entities
+            entities:
+              - !include ../Cartes-Pop-Up/PopUp-Saisons.yaml
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    color: yellow
+    icon: mdi:progress-alert
+    entity: sensor.defi_hilo_nb_defi_planifies
+    name: Défi prévu
+    visibility:
+      - condition: state
+        entity: sensor.defi_hilo_nb_defi_planifies
+        state_not: "0"
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Défis Hilo
+          content:
+            type: entities
+            entities:
+              - !include ../Cartes-Pop-Up/PopUp-Defis-Hilo-A-Venir.yaml
+  - type: entity
+    show_name: true
+    show_state: false
+    show_icon: true
+    entity: sensor.defi_hilo_in_progress
+    icon: mdi:progress-alert
+    name: Défi en cour
+    visibility:
+      - condition: state
+        entity: sensor.defi_hilo_in_progress
+        state: "True"
+    color: red
+    show_entity_picture: true
+    display_type: minimal
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Défis Hilo
+          content:
+            type: entities
+            entities:
+              - !include ../Cartes-Pop-Up/PopUp-Defi-Hilo-En-Cour.yaml
+  - type: entity
+    entity: sensor.nombre_de_lumieres_allumees
+    icon: mdi:lightbulb
+    color: red
+    visibility:
+      - condition: state
+        entity: sensor.nombre_de_lumieres_allumees
+        state_not: "0"
+    name: Allumées
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Lumières allumées
+          content:
+            type: entities
+            entities:
+              - !include ../Cartes-Pop-Up/PopUp-Lumieres-Allumees.yaml
+  - type: entity
+    entity: sensor.nombre_de_mise_a_jour_total
+    icon: mdi:update
+    color: red
+    visibility:
+      - condition: state
+        entity: sensor.nombre_de_mise_a_jour_total
+        state_not: "0"
+    name: MAJ
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Mises à jours
+          content:
+            type: entities
+            entities:
+              - !include ../Cartes-Pop-Up/PopUp-Mise-A-Jour.yaml
+              
+  - type: entity 
+    show_name: true
+    show_state: false
+    show_icon: true
+    entity: sensor.shawinigan_summary
+    name: Alerte
+    color: red
+    icon: mdi:alert
+    visibility:
+      - condition: or
+        conditions:
+          - condition: state
+            entity: sensor.shawinigan_advisory
+            state_not: "0"
+          - condition: state
+            entity: sensor.shawinigan_endings
+            state_not: "0"
+          - condition: state
+            entity: sensor.shawinigan_statements
+            state_not: "0"
+          - condition: state
+            entity: sensor.shawinigan_warnings
+            state_not: "0"
+          - condition: state
+            entity: sensor.shawinigan_watches
+            state_not: "0"
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Avis en cour
+          content:
+            type: entities
+            entities:
+              - !include ../Cartes-Pop-Up/PopUp-Avis.yaml
+        
+  - type: entity
+    show_name: false
+    show_state: false
+    show_icon: true
+    entity: sensor.collecte_des_dechets
+    icon: mdi:compost
+    show_entity_picture: true
+    visibility:
+      - condition: or
+        conditions:
+          - condition: state
+            entity: sensor.ordures_menageres_date
+            state: "0"
+          - condition: state
+            entity: sensor.ordures_menageres_date
+            state: "1"
+    color: grey
+    tap_action:
+      action: none
+  - type: entity
+    show_name: false
+    show_state: false
+    show_icon: true
+    entity: sensor.collecte_de_la_recuperation
+    icon: mdi:compost
+    show_entity_picture: true
+    visibility:
+      - condition: or
+        conditions:
+          - condition: state
+            entity: sensor.ordures_recuperation_date
+            state: "0"
+          - condition: state
+            entity: sensor.ordures_recuperation_date
+            state: "1"
+    tap_action:
+      action: none
+    color: ""
+  - type: entity
+    show_name: false
+    show_state: false
+    show_icon: true
+    entity: sensor.collecte_du_compostage
+    icon: mdi:compost
+    show_entity_picture: true
+    visibility:
+      - condition: or
+        conditions:
+          - condition: state
+            entity: sensor.ordures_compostage_date
+            state: "0"
+          - condition: state
+            entity: sensor.ordures_compostage_date
+            state: "1"
+    tap_action:
+      action: none

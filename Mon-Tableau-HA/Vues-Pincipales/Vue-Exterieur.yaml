@@ -1,0 +1,122 @@
+title: Extérieure
+path: Vue-exterieure
+icon: mdi:tree
+theme: !include ../Cartes/Carte-Theme.yaml
+subview: false
+type: sections
+max_columns: 2
+cards: []
+sections:
+  - type: grid
+    cards:
+      - type: heading
+        heading: Éclairages
+        heading_style: title
+        icon: mdi:lamp
+      - type: tile
+        entity: light.exterieure_avant
+        name: Avant
+        color: dark-grey
+        layout_options:
+          grid_columns: 2
+          grid_rows: 2
+        features:
+          - type: light-brightness
+      - type: tile
+        entity: light.galerie_avant_groupe_de_lumieres
+        name: Galerie Avant
+        color: lime
+        layout_options:
+          grid_columns: 2
+          grid_rows: 2
+        features:
+          - type: light-brightness
+      - type: tile
+        entity: light.lampadaire_groupe_de_lumieres
+        name: Lampadaire
+        icon: hue:floor-lantern-group
+        color: indigo
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+      - type: tile
+        entity: light.neviweb130_light_galerie_arriere
+        name: Galerie Arrière
+        color: red
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+      - type: heading
+        icon: mdi:cctv
+        heading_style: title
+        heading: Contrôles des caméras
+        entities:
+          - show_state: true
+            show_icon: true
+            entity: alarm_control_panel.blink_ca_exterieures
+            color: green
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+      - type: tile
+        entity: alarm_control_panel.blink_ca_exterieures
+        show_entity_picture: true
+        name: Extérieure
+        features:
+          - type: alarm-modes
+        layout_options:
+          grid_columns: 4
+          grid_rows: 3
+  - type: grid
+    cards:
+      - type: heading
+        heading: États caméras
+        heading_style: title
+        icon: mdi:cctv
+      - type: tile
+        entity: camera.camera_avant
+        name: Galerie avant
+        show_entity_picture: true
+        layout_options:
+          grid_columns: 4
+          grid_rows: 1
+      - type: tile
+        entity: camera.camera_allee
+        name: Galerie allée
+        show_entity_picture: true
+        layout_options:
+          grid_columns: 4
+          grid_rows: 1
+      - type: tile
+        entity: camera.camera_arriere
+        name: Galerie arrière
+        show_entity_picture: true
+        layout_options:
+          grid_columns: 4
+          grid_rows: 1
+      - type: heading
+        icon: mdi:motion-sensor
+        heading_style: title
+        entities: []
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+        heading: Mouvements
+      - type: tile
+        entity: binary_sensor.camera_avant_mouvement
+        name: Galerie Avant
+        layout_options:
+          grid_columns: 4
+          grid_rows: 1
+      - type: tile
+        entity: binary_sensor.camera_arriere_mouvement
+        name: Galerie arrière
+        color: purple
+        layout_options:
+          grid_columns: 4
+          grid_rows: 1
+      - type: tile
+        entity: binary_sensor.camera_allee_mouvement
+        layout_options:
+          grid_columns: 4
+          grid_rows: 1

@@ -1,0 +1,163 @@
+title: Sous-sol
+path: Vue-sous-sol
+icon: mdi:home-floor-0
+theme: !include ../Cartes/Carte-Theme.yaml
+subview: false
+type: sections
+max_columns: 2
+cards: []
+sections:
+  - type: grid
+    cards:
+      - type: heading
+        icon: mdi:account-group
+        heading: Salle familiale
+        heading_style: title
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+        entities:
+          - show_state: true
+            show_icon: true
+            entity: sensor.maison_sous_sol_temperature
+            color: accent
+          - show_state: true
+            show_icon: true
+            entity: sensor.maison_sous_sol_humidite
+            color: blue
+          - entity: binary_sensor.detecteur_de_fuites_chauffe_eau_humidite
+      - features:
+          - type: target-temperature
+        type: tile
+        entity: climate.neviweb130_climate_salle_familiale
+        name: Chauffage
+        color: brown
+        state_content:
+          - current_temperature
+          - hvac_action
+          - monthly_kwh
+        layout_options:
+          grid_columns: 2
+          grid_rows: 2
+      - type: tile
+        entity: light.salle_familiale
+        name: Plafond
+        icon: phu:bulb-group-ceiling-square
+        color: cyan
+        grid_options:
+          columns: 6
+          rows: 1
+      - type: tile
+        entity: light.escalier_sous_sol_groupe_de_lumieres
+        icon: phu:bulb-group-ceiling-square
+        name: Escalier
+        color: pink
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+      - type: tile
+        entity: light.echangeur
+        icon: hue:bulb-br30-hung
+        name: Échangeur d’air
+        color: orange
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+      - type: tile
+        entity: switch.neviweb130_switch_echangeur_d_air
+        grid_options:
+          columns: 6
+          rows: 1
+        name: Échangeur d’air
+      - type: tile
+        entity: binary_sensor.detecteur_de_fuites_chauffe_eau_humidite
+        name: Chauffe eau
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+      - type: tile
+        name: Mouvements
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+        entity: binary_sensor.camera_sous_sol_mouvement
+      - type: tile
+        entity: camera.camera_sous_sol
+        show_entity_picture: true
+        layout_options:
+          grid_columns: 4
+          grid_rows: 1
+  - type: grid
+    cards:
+      - type: heading
+        icon: mdi:bed-queen
+        heading: Chambre des invités
+        heading_style: title
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+        entities:
+          - show_state: true
+            show_icon: true
+            entity: sensor.th_ch_invites_temperature
+            color: accent
+          - show_state: true
+            show_icon: true
+            entity: sensor.th_ch_invites_humidite
+            color: blue
+      - features:
+          - type: target-temperature
+        type: tile
+        entity: climate.neviweb130_climate_ch_invites
+        name: Chauffage
+        color: light-blue
+        state_content:
+          - current_temperature
+          - hvac_action
+          - monthly_kwh
+        layout_options:
+          grid_columns: 2
+          grid_rows: 2
+      - type: tile
+        entity: light.neviweb130_light_chambre_invites
+        name: Plafond
+        icon: phu:ceiling-lamp-plafond
+        layout_options:
+          grid_columns: 2
+          grid_rows: 2
+      - type: heading
+        icon: mdi:tools
+        heading: Atelier
+        heading_style: title
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+        entities:
+          - show_state: true
+            show_icon: true
+            entity: sensor.th_atelier_temperature
+            color: accent
+          - show_state: true
+            show_icon: true
+            entity: sensor.th_atelier_humidite
+            color: blue
+      - features:
+          - type: target-temperature
+        type: tile
+        entity: climate.neviweb130_climate_atelier
+        name: Chauffage
+        color: lime
+        state_content:
+          - current_temperature
+          - hvac_action
+          - monthly_kwh
+        layout_options:
+          grid_columns: 2
+          grid_rows: 2
+      - type: tile
+        entity: light.neviweb130_light_atelier
+        name: Huche
+        icon: hue:bulb-group-ceiling-round
+        layout_options:
+          grid_columns: 2
+          grid_rows: 2

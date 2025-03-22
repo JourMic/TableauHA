@@ -1,0 +1,234 @@
+title: Hilo chauffage
+path: Sous-vue-hilo-4
+icon: mdi:thermostat
+theme: !include ../Cartes/Carte-Theme.yaml
+subview: true
+type: sections
+max_columns: 2
+cards: []
+sections:
+  - type: grid
+    cards:
+      - type: heading
+        icon: mdi:arrow-expand-vertical
+        heading_style: title
+        heading: Réglages des thermostats
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+      - type: horizontal-stack
+        cards:
+          - type: custom:apexcharts-card
+            header:
+              show: true
+              title: Salon
+              show_states: true
+              colorize_states: true
+            graph_span: 8h
+            cache: true
+            series:
+              - entity: climate.salon
+                attribute: current_temperature
+                name: Température
+                color: red
+                fill_raw: last
+              - entity: climate.salon
+                attribute: temperature
+                name: Consigne
+                fill_raw: last
+          - type: custom:apexcharts-card
+            header:
+              show: true
+              title: Cuisine
+              show_states: true
+              colorize_states: true
+            graph_span: 8h
+            cache: true
+            series:
+              - entity: climate.cuisine_2
+                attribute: current_temperature
+                name: Température
+                color: red
+                fill_raw: last
+              - entity: climate.cuisine_2
+                attribute: temperature
+                name: Consigne
+                fill_raw: last
+        layout_options:
+          grid_columns: 4
+          grid_rows: 4
+      - type: horizontal-stack
+        cards:
+          - type: custom:apexcharts-card
+            header:
+              show: true
+              title: Salle d'eau
+              show_states: true
+              colorize_states: true
+            graph_span: 8h
+            cache: true
+            series:
+              - entity: climate.salle_eau
+                attribute: current_temperature
+                name: Température
+                color: red
+                fill_raw: last
+              - entity: climate.salle_eau
+                attribute: temperature
+                name: Consigne
+                fill_raw: last
+          - type: custom:apexcharts-card
+            header:
+              show: true
+              title: Chambre des maîtres
+              show_states: true
+              colorize_states: true
+            graph_span: 8h
+            cache: true
+            series:
+              - entity: climate.ch_maitres
+                attribute: current_temperature
+                name: Température
+                color: red
+                fill_raw: last
+              - entity: climate.ch_maitres
+                attribute: temperature
+                name: Consigne
+                fill_raw: last
+        layout_options:
+          grid_columns: 4
+          grid_rows: 4
+      - type: horizontal-stack
+        cards:
+          - type: custom:apexcharts-card
+            header:
+              show: true
+              title: Bureau
+              show_states: true
+              colorize_states: true
+            graph_span: 8h
+            cache: true
+            series:
+              - entity: climate.bureau
+                attribute: current_temperature
+                name: Température
+                color: red
+                fill_raw: last
+              - entity: climate.bureau
+                attribute: temperature
+                name: Consigne
+                fill_raw: last
+          - type: custom:apexcharts-card
+            header:
+              show: true
+              title: Salle de bain
+              show_states: true
+              colorize_states: true
+            graph_span: 8h
+            cache: true
+            series:
+              - entity: climate.salle_bain
+                attribute: current_temperature
+                name: Température
+                color: red
+                fill_raw: last
+              - entity: climate.salle_bain
+                attribute: temperature
+                name: Consigne
+                fill_raw: last
+        layout_options:
+          grid_columns: 4
+          grid_rows: 4
+  - type: grid
+    cards:
+      - type: heading
+        icon: mdi:arrow-expand-vertical
+        heading_style: title
+        heading: Réglages des thermostats
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+      - type: horizontal-stack
+        cards:
+          - type: custom:apexcharts-card
+            header:
+              show: true
+              title: Salle de repos
+              show_states: true
+              colorize_states: true
+            graph_span: 8h
+            cache: true
+            series:
+              - entity: climate.salle_repos
+                attribute: current_temperature
+                name: Température
+                color: red
+                fill_raw: last
+              - entity: climate.salle_repos
+                attribute: temperature
+                name: Consigne
+                fill_raw: last
+          - type: custom:apexcharts-card
+            header:
+              show: true
+              title: Salle familiale
+              show_states: true
+              colorize_states: true
+            graph_span: 8h
+            cache: true
+            series:
+              - entity: climate.salle_familiale
+                attribute: current_temperature
+                name: Température
+                color: red
+                fill_raw: last
+              - entity: climate.salle_familiale
+                attribute: temperature
+                name: Consigne
+                fill_raw: last
+        layout_options:
+          grid_columns: 4
+          grid_rows: 4
+      - type: horizontal-stack
+        cards:
+          - type: custom:apexcharts-card
+            header:
+              show: true
+              title: Atelier
+              show_states: true
+              colorize_states: true
+            graph_span: 8h
+            cache: true
+            series:
+              - entity: climate.atelier
+                attribute: current_temperature
+                name: Température
+                color: red
+                fill_raw: last
+              - entity: climate.atelier
+                attribute: temperature
+                name: Consigne
+                fill_raw: last
+          - type: custom:apexcharts-card
+            header:
+              show: true
+              title: Chambre des invités
+              show_states: true
+              colorize_states: true
+            graph_span: 8h
+            cache: true
+            series:
+              - entity: climate.ch_invites
+                attribute: current_temperature
+                name: Température
+                color: red
+                fill_raw: last
+              - entity: climate.ch_invites
+                attribute: temperature
+                name: Consigne
+                fill_raw: last
+        layout_options:
+          grid_columns: 4
+          grid_rows: 4
+
+badges: []

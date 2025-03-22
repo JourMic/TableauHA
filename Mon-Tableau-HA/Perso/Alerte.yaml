@@ -1,0 +1,36 @@
+  - type: entity 
+    show_name: true
+    show_state: false
+    show_icon: true
+    entity: sensor.shawinigan_summary
+    name: Alerte en cour
+    color: red
+    icon: mdi:alert
+    visibility:
+      - condition: or
+        conditions:
+          - condition: state
+            entity: sensor.shawinigan_advisory
+            state_not: "0"
+          - condition: state
+            entity: sensor.shawinigan_endings
+            state_not: "0"
+          - condition: state
+            entity: sensor.shawinigan_statements
+            state_not: "0"
+          - condition: state
+            entity: sensor.shawinigan_warnings
+            state_not: "0"
+          - condition: state
+            entity: sensor.shawinigan_watches
+            state_not: "0"
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Avis en cour
+          content:
+            type: entities
+            entities:
+              - !include ../Cartes-Pop-Up/PopUp-Avis.yaml

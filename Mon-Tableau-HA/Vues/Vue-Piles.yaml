@@ -1,0 +1,320 @@
+title: Piles
+path: sous-vue-piles
+icon: mdi:battery
+theme: !include ../Cartes/Carte-Theme.yaml
+subview: false
+type: sections
+max_columns: 2
+cards: []
+sections:
+  - type: grid
+    cards:
+      - type: heading
+        heading: Niveaux des piles
+        heading_style: title
+        icon: mdi:battery
+      - type: custom:auto-entities
+        card:
+          type: custom:bar-card
+          title_position: inside
+          height: 38
+          positions:
+            icon: inside
+            indicator: inside
+            name: inside
+            value: inside
+          show_icon: true
+          align: split
+          columns: "3"
+          max: 100
+          unit_of_measurement: "%"
+          severity:
+            - color: "#FF453A"
+              from: 0
+              to: 9
+              icon: mdi:battery-outline
+            - color: "#FE6230"
+              from: 10
+              to: 19
+              icon: mdi:battery-10
+            - color: "#FE7F26"
+              from: 20
+              to: 29
+              icon: mdi:battery-20
+            - color: "#FE9C1C"
+              from: 30
+              to: 39
+              icon: mdi:battery-30
+            - color: "#FEB912"
+              from: 40
+              to: 49
+              icon: mdi:battery-40
+            - color: "#FED709"
+              from: 50
+              to: 59
+              icon: mdi:battery-50
+            - color: "#D8CC15"
+              from: 60
+              to: 69
+              icon: mdi:battery-60
+            - color: "#B3C121"
+              from: 70
+              to: 79
+              icon: mdi:battery-70
+            - color: "#8EB62E"
+              from: 80
+              to: 89
+              icon: mdi:battery-80
+            - color: "#69AB3A"
+              from: 90
+              to: 99
+              icon: mdi:battery-90
+            - color: "#44A047"
+              from: 100
+              to: 100
+              icon: mdi:battery
+          card_mod:
+            style: >
+              bar-card-currentbar, bar-card-current, bar-card-backgroundbar
+              {
+                  height: 5px !important;
+                  margin-top: 25px;
+              }
+
+              ha-icon{
+                  color: black !important;
+              }
+
+              bar-card-iconbar {
+                  margin-bottom: 10px;
+              }
+          animation:
+            state: "on"
+            speed: "2"
+        filter:
+          include:
+            - attributes:
+                device_class: battery
+              domain: sensor
+        sort:
+          method: state
+          numeric: true
+        show_empty: false
+        layout_options:
+          grid_columns: full
+          grid_rows: 8
+        visibility:
+          - condition: screen
+            media_query: "(min-width: 768px)"
+      - type: custom:auto-entities
+        card:
+          type: custom:bar-card
+          title_position: inside
+          height: 38
+          positions:
+            icon: inside
+            indicator: inside
+            name: inside
+            value: inside
+          show_icon: true
+          align: split
+          columns: "2"
+          max: 100
+          unit_of_measurement: "%"
+          severity:
+            - color: "#FF453A"
+              from: 0
+              to: 9
+              icon: mdi:battery-outline
+            - color: "#FE6230"
+              from: 10
+              to: 19
+              icon: mdi:battery-10
+            - color: "#FE7F26"
+              from: 20
+              to: 29
+              icon: mdi:battery-20
+            - color: "#FE9C1C"
+              from: 30
+              to: 39
+              icon: mdi:battery-30
+            - color: "#FEB912"
+              from: 40
+              to: 49
+              icon: mdi:battery-40
+            - color: "#FED709"
+              from: 50
+              to: 59
+              icon: mdi:battery-50
+            - color: "#D8CC15"
+              from: 60
+              to: 69
+              icon: mdi:battery-60
+            - color: "#B3C121"
+              from: 70
+              to: 79
+              icon: mdi:battery-70
+            - color: "#8EB62E"
+              from: 80
+              to: 89
+              icon: mdi:battery-80
+            - color: "#69AB3A"
+              from: 90
+              to: 99
+              icon: mdi:battery-90
+            - color: "#44A047"
+              from: 100
+              to: 100
+              icon: mdi:battery
+          card_mod:
+            style: >
+              bar-card-currentbar, bar-card-current, bar-card-backgroundbar
+              {
+                  height: 5px !important;
+                  margin-top: 25px;
+              }
+
+              ha-icon{
+                  color: black !important;
+              }
+
+              bar-card-iconbar {
+                  margin-bottom: 10px;
+              }
+          animation:
+            state: "on"
+            speed: "2"
+        filter:
+          include:
+            - attributes:
+                device_class: battery
+              domain: sensor
+        sort:
+          method: state
+          numeric: true
+        show_empty: false
+        layout_options:
+          grid_columns: 5
+          grid_rows: 8
+        visibility:
+          - condition: screen
+            media_query: "(min-width: 0px) and (max-width: 767px)"
+    column_span: 2
+  - type: grid
+    cards:
+      - type: heading
+        heading: Piles de caméras
+        heading_style: title
+        icon: mdi:cctv
+        visibility:
+          - condition: screen
+            media_query: "(min-width: 768px)"
+      - type: custom:auto-entities
+        show_empty: false
+        filter:
+          include:
+            - attributes:
+                device_class: battery
+              domain: binary_sensor
+              options:
+                type: custom:mushroom-template-card
+                primary: |
+                  {{state_attr(entity,'friendly_name')}}
+                secondary: |
+                  {{ state_translated(entity) }}
+                icon: mdi:cctv
+                tap_action:
+                  action: more-info
+                double_tap_action:
+                  action: none
+        sort:
+          method: friendly_name
+        card:
+          square: false
+          type: grid
+          columns: 3
+        card_param: cards
+        layout_options:
+          grid_columns: full
+          grid_rows: 2
+        visibility:
+          - condition: screen
+            media_query: "(min-width: 768px)"
+      - type: heading
+        icon: ""
+        heading_style: title
+        heading: "1"
+        visibility:
+          - condition: screen
+            media_query: "(min-width: 0px) and (max-width: 767px)"
+      - type: heading
+        icon: ""
+        heading_style: title
+        heading: "2"
+        visibility:
+          - condition: screen
+            media_query: "(min-width: 0px) and (max-width: 767px)"
+      - type: heading
+        icon: ""
+        heading_style: title
+        heading: "3"
+        visibility:
+          - condition: screen
+            media_query: "(min-width: 0px) and (max-width: 767px)"
+      - type: heading
+        heading: Piles de caméras
+        heading_style: title
+        icon: mdi:cctv
+        visibility:
+          - condition: screen
+            media_query: "(min-width: 0px) and (max-width: 767px)"
+      - type: custom:auto-entities
+        show_empty: false
+        filter:
+          include:
+            - attributes:
+                device_class: battery
+              domain: binary_sensor
+              options:
+                type: custom:mushroom-template-card
+                primary: |
+                  {{state_attr(entity,'friendly_name')}}
+                secondary: |
+                  {{ state_translated(entity) }}
+                icon: mdi:cctv
+                tap_action:
+                  action: more-info
+                double_tap_action:
+                  action: none
+        sort:
+          method: friendly_name
+        card:
+          square: false
+          type: grid
+          columns: 2
+        card_param: cards
+        layout_options:
+          grid_columns: 5
+          grid_rows: 8
+        visibility:
+          - condition: screen
+            media_query: "(min-width: 0px) and (max-width: 767px)"
+    column_span: 2
+badges:
+  - type: entity
+    entity: sensor.life360_pile_tel_valerie
+    display_type: complete
+    name: Téléphone Valérie
+    icon: mdi:battery
+  - type: entity
+    entity: sensor.life360_pile_tel_brigitte
+    display_type: complete
+    name: Téléphone Brigitte
+  - type: entity
+    entity: sensor.life360_pile_tel_claude
+    display_type: complete
+    name: Téléphone Claude
+  - type: entity
+    entity: sensor.life360_pile_tel_michel
+    display_type: complete
+    name: Téléphone Michel

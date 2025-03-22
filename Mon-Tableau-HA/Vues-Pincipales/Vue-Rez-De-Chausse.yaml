@@ -1,0 +1,272 @@
+title: Rez-de-chaussée
+path: Vue-rez-de-chaussee
+icon: mdi:home-floor-1
+theme: !include ../Cartes/Carte-Theme.yaml
+subview: false
+type: sections
+max_columns: 2
+cards: []
+sections:
+  - type: grid
+    cards:
+      - type: heading
+        icon: mdi:sofa
+        heading_style: title
+        heading: Salon
+        entities:
+          - show_state: true
+            show_icon: true
+            entity: sensor.maison_temperature
+            color: accent
+            tap_action:
+              action: none
+          - show_state: true
+            show_icon: true
+            entity: sensor.maison_humidite
+            color: primary
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+      - features:
+          - type: target-temperature
+        type: tile
+        entity: climate.neviweb130_climate_salon
+        name: Chauffage
+        color: red
+        state_content:
+          - current_temperature
+          - hvac_action
+          - temperature
+      - type: tile
+        entity: light.salon
+        name: Lampes
+        icon: hue:beyond-solid-group
+      - type: tile
+        entity: light.lecture
+        name: Lectrure
+        icon: mdi:desk-lamp-on
+      - type: tile
+        entity: light.brilliant_salon_huche_du_salon
+        name: Huche
+        icon: hue:ceiling-adore
+        color: indigo
+      - type: tile
+        entity: light.govee_salon
+        name: Govee Télé
+        color: brown
+      - type: tile
+        entity: switch.neviweb130_switch_huche_salon
+        name: Huche
+      - type: tile
+        entity: switch.neviweb130_switch_lampes_du_salon
+        name: Lampes
+      - type: tile
+        entity: binary_sensor.camera_salon_mouvement
+        name: Mouvements
+      - type: heading
+        icon: mdi:table-chair
+        heading_style: title
+        entities:
+          - show_state: true
+            show_icon: true
+            color: accent
+            tap_action:
+              action: none
+            entity: sensor.govee_salle_a_manger_temperature
+          - show_state: true
+            show_icon: true
+            entity: sensor.govee_salle_a_manger_humidity
+            color: primary
+          - show_state: true
+            show_icon: true
+            entity: lock.porte_d_entree
+            color: amber
+            icon: mdi:lock
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+        heading: Salle à manger
+      - features:
+          - type: target-temperature
+          - type: climate-hvac-modes
+        type: tile
+        entity: climate.cuisine
+        name: Chauffage
+        color: pink
+        layout_options:
+          grid_columns: 2
+          grid_rows: 2
+        state_content:
+          - temperature
+          - state
+      - features:
+          - type: lock-commands
+        type: tile
+        entity: lock.porte_d_entree
+        name: Serrure avant
+        layout_options:
+          grid_columns: 2
+          grid_rows: 2
+      - type: tile
+        entity: plant.lis_de_la_paix
+        name: Lis de la paix
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+      - type: tile
+        entity: light.brilliant_diner_table
+        color: blue-grey
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+        name: Table
+      - type: tile
+        entity: light.brilliant_diner_vestibule_avant
+        name: Vestibulle
+        icon: phu:ceiling-lamp-plafond
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+  - type: grid
+    cards:
+      - type: heading
+        icon: mdi:fridge-top
+        heading_style: title
+        entities:
+          - show_state: true
+            show_icon: true
+            entity: sensor.sensibo_temperature_courante_cuisine
+            color: accent
+          - show_state: true
+            show_icon: true
+            entity: sensor.sensibo_humiditee_courante_cuisine
+            color: primary
+          - show_state: true
+            show_icon: true
+            entity: binary_sensor.detecteur_de_fuites_lave_vaisselles_humidite
+            color: cyan
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+        heading: Cuisine
+      - features:
+          - type: target-temperature
+        type: tile
+        entity: climate.neviweb130_climate_cuisine
+        name: Chauffage
+        color: indigo
+        state_content:
+          - current_temperature
+          - hvac_action
+          - hourly_kwh
+        layout_options:
+          grid_columns: 2
+          grid_rows: 2
+      - type: tile
+        entity: light.neviweb130_light_cuisine
+        name: Évier
+        color: orange
+        layout_options:
+          grid_columns: 2
+          grid_rows: 2
+      - type: tile
+        entity: light.huche_cuisine_lumiere
+        name: Huche
+        color: amber
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+      - type: tile
+        entity: light.garde_robes_cuisine_lumiere
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+        icon: hue:ceiling-beyond-alt
+        name: Placard
+        color: primary
+      - type: tile
+        entity: switch.neviweb130_switch_ipad_ha
+        name: IPad HA
+        color: indigo
+      - type: tile
+        entity: light.neviweb130_light_entree_arriere
+        name: Entrée arrière
+        icon: hue:ceiling-fugato-two
+        show_entity_picture: true
+        color: green
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+      - type: tile
+        entity: binary_sensor.camera_cuisine_mouvement
+        name: Mouvements
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+      - type: tile
+        entity: binary_sensor.detecteur_de_fuites_lave_vaisselles_humidite
+        name: Fuites
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+      - type: heading
+        icon: mdi:toilet
+        entities:
+          - show_state: true
+            show_icon: true
+            entity: sensor.govee_salle_d_eau_temperature
+            color: accent
+          - show_state: true
+            show_icon: true
+            entity: sensor.govee_salle_d_eau_humidity
+            color: primary
+          - show_state: true
+            show_icon: true
+            entity: binary_sensor.detecteur_de_fuites_salle_d_eau_humidite
+            color: cyan
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+        heading: Salle d’eau
+        heading_style: title
+      - features:
+          - type: target-temperature
+        type: tile
+        entity: climate.neviweb130_climate_salle_eau
+        name: Chauffage
+        state_content:
+          - current_temperature
+          - hvac_action
+          - hourly_kwh
+      - type: tile
+        entity: light.neviweb130_light_salle_deau
+        name: Plafond
+        icon: hue:ceiling-adore
+        color: pink
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+      - type: tile
+        entity: binary_sensor.detecteur_de_fuites_salle_d_eau_humidite
+        name: Fuites Toilette
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+      - type: tile
+        entity: vacuum.roomba
+        name: Aspirateur
+        color: blue
+        features:
+          - type: vacuum-commands
+            commands:
+              - start_pause
+              - stop
+              - locate
+        layout_options:
+          grid_columns: 4
+          grid_rows: 2
+  - type: grid
+    cards: []
+  - type: grid
+    cards: []
+badges: []

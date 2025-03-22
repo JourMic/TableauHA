@@ -1,0 +1,22 @@
+type: custom:clock-weather-card
+entity: weather.forecast_shawinigan_sud
+sun_entity: sun.sun
+temperature_sensor: sensor.tempest_st_00032986_temperature
+humidity_sensor: sensor.tempest_st_00032986_humidity
+apparent_sensor: sensor.tempest_st_00032986_feels_like_temperature
+# aqi_sensor: sensor.shawinigan_aqhi
+weather_icon_type: fill
+animated_icon: true
+forecast_rows: 4
+locale: fr
+time_pattern: HH:mm
+time_format: 24
+date_pattern: cccc d MMMM yyyy
+hide_today_section: false
+hide_forecast_section: true
+show_humidity: true
+hide_clock: false
+hide_date: false
+hourly_forecast: false
+use_browser_time: false
+show_decimal: false

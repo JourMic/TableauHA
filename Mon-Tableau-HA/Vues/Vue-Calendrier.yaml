@@ -1,0 +1,50 @@
+title: Calandrier
+path: Sous-vue-calandriers
+icon: mdi:calendar-month
+theme: !include ../Cartes/Carte-Theme.yaml
+subview: false
+type: sections
+max_columns: 2
+cards: []
+sections:
+  - type: grid
+    cards:
+      - type: heading
+        heading: Quotidien
+        heading_style: title
+        icon: mdi:calendar
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+      - initial_view: listWeek
+        type: calendar
+        entities:
+          - calendar.michel
+          - calendar.anniversaires
+          - calendar.sports
+          - calendar.ordures_menageres
+          - calendar.ordures_compostage
+          - calendar.ordures_recuperation
+        title: Quotidien
+  - type: grid
+    cards:
+      - type: heading
+        heading: Mensuel
+        heading_style: title
+        icon: mdi:calendar-month
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+      - initial_view: dayGridMonth
+        type: calendar
+        entities:
+          - calendar.michel
+          - calendar.anniversaires
+          - calendar.sports
+          - calendar.ordures_menageres
+          - calendar.ordures_compostage
+          - calendar.ordures_recuperation
+        title: Mensuel
+badges:
+  - type: entity
+    entity: sensor.date_time

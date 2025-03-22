@@ -1,0 +1,84 @@
+title: Vue de test
+path: Sous-vue-de-test
+icon: mdi:test-tube
+theme: !include ../Cartes/Carte-Theme.yaml
+subview: false
+type: sections
+max_columns: 2
+cards: []
+sections:
+  - type: grid
+    cards:
+      - type: custom:apexcharts-card
+        graph_span: 12month
+        span:
+          end: month
+          offset: "-0d"
+        header:
+          show: true
+          show_states: true
+        apex_config:
+          fill:
+            type: gradient
+            gradient:
+              type: vertical
+              shadeIntensity: 0
+              opacityFrom: 1
+              opacityTo: 0.5
+              stops: 10
+          chart:
+            height: 150px
+          grid:
+            show: false
+            borderColor: darkslateblue
+            strokeDashArray: 2
+          dataLabels:
+            background:
+              borderWidth: 0
+              opacity: 0
+              foreColor: white
+            offsetY: -10
+          plotOptions:
+            bar:
+              borderRadius: 0
+              dataLabels:
+                position: top
+          xaxis:
+            tooltip:
+              enabled: false
+        series:
+          - entity: sensor.tempest_st_00032986_rain_today
+            name: Pluie par mois
+            color: deepskyblue
+            type: column
+            group_by:
+              func: sum
+              duration: 1month
+              fill: zero
+            statistics:
+              type: state
+              period: day
+              align: start
+            show:
+              name_in_header: true
+              datalabels: true
+              in_chart: true
+              legend_value: false
+              extremas: false
+          - entity: sensor.tempest_st_00032986_rain_today
+            name: Pluie ces 12 derniers mois
+            color: deepskyblue
+            type: column
+            group_by:
+              func: sum
+              duration: 12month
+              fill: zero
+            statistics:
+              type: state
+              period: day
+              align: end
+            show:
+              name_in_header: true
+              datalabels: false
+              in_chart: false
+              legend_value: false

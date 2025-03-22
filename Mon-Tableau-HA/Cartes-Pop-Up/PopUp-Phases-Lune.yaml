@@ -1,0 +1,114 @@
+type: custom:vertical-stack-in-card
+card_mod:
+  style: |
+    ha-card {
+      box-shadow: 0 0 0 2px gray;
+    }
+cards:
+  - type: picture-elements
+    image: /local/mes_images/Phases lune.jpg
+    elements:
+      - type: conditional
+        conditions:
+          - entity: sensor.moon_phase
+            state: waxing_gibbous
+        elements:
+          - type: image
+            image: /local/mes_images/circle.png
+            style:
+              top: 67.5%
+              left: 71%
+              width: 11%
+              border: 2px solid yellow
+              border-radius: 50%
+      - type: conditional
+        conditions:
+          - entity: sensor.moon_phase
+            state: full_moon
+        elements:
+          - type: image
+            image: /local/mes_images/circle.png
+            style:
+              top: 49.3%
+              left: 76.2%
+              width: 11%
+              border: 2px solid yellow
+              border-radius: 50%
+      - type: conditional
+        conditions:
+          - entity: sensor.moon_phase
+            state: waning_gibbous
+        elements:
+          - type: image
+            image: /local/mes_images/circle.png
+            style:
+              top: 36.7%
+              left: 70.6%
+              width: 11%
+              border: 2px solid yellow
+              border-radius: 50%
+      - type: conditional
+        conditions:
+          - entity: sensor.moon_phase
+            state: new_moon
+        elements:
+          - type: image
+            image: /local/mes_images/circle.png
+            style:
+              top: 50.3%
+              left: 37.6%
+              width: 11%
+              border: 2px solid yellow
+              border-radius: 50%
+      - type: conditional
+        conditions:
+          - entity: sensor.moon_phase
+            state: waxing_crescent
+        elements:
+          - type: image
+            image: /local/mes_images/circle.png
+            style:
+              top: 67%
+              left: 44.5%
+              width: 11%
+              border: 2px solid yellow
+              border-radius: 50%
+      - type: conditional
+        conditions:
+          - entity: sensor.moon_phase
+            state: first_quarter
+        elements:
+          - type: image
+            image: /local/mes_images/circle.png
+            style:
+              top: 72.5%
+              left: 57.8%
+              width: 11%
+              border: 2px solid yellow
+              border-radius: 50%
+      - type: conditional
+        conditions:
+          - entity: sensor.moon_phase
+            state: last_quarter
+        elements:
+          - type: image
+            image: /local/mes_images/circle.png
+            style:
+              top: 32%
+              left: 58%
+              width: 11%
+              border: 2px solid yellow
+              border-radius: 50%
+      - type: conditional
+        conditions:
+          - entity: sensor.moon_phase
+            state: waning_crescent
+        elements:
+          - type: image
+            image: /local/mes_images/circle.png
+            style:
+              top: 36.8%
+              left: 44.2%
+              width: 11%
+              border: 2px solid yellow
+              border-radius: 50%

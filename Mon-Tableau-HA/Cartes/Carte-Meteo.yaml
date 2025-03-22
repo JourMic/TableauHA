@@ -1,0 +1,44 @@
+type: custom:weather-chart-card
+entity: weather.forecast_shawinigan_sud
+show_main: true
+show_temperature: true
+show_current_condition: true
+show_attributes: true
+show_time: true
+show_time_seconds: false
+show_day: true
+show_date: true
+show_humidity: true
+show_pressure: true
+show_wind_direction: true
+show_wind_speed: true
+show_sun: true
+show_feels_like: true
+show_dew_point: true
+show_wind_gust_speed: true
+show_visibility: true
+show_last_changed: false
+use_12hour_format: false
+icons_size: 35
+animated_icons: true
+icon_style: style1
+autoscroll: true
+forecast:
+  precipitation_type: rainfall
+  show_probability: false
+  labels_font_size: "11"
+  precip_bar_size: "100"
+  style: style1
+  show_wind_forecast: true
+  condition_icons: true
+  round_temp: true
+  type: daily
+  number_of_forecasts: "0"
+  disable_animation: false
+units:
+  speed: ""
+temp: sensor.tempest_st_00032986_temperature
+feels_like: sensor.tempest_st_00032986_feels_like_temperature
+windspeed: sensor.tempest_st_00032986_wind_speed
+wind_gust_speed: sensor.tempest_st_00032986_wind_gust
+description: sensor.shawinigan_summary

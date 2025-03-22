@@ -1,0 +1,32 @@
+type: custom:vertical-stack-in-card
+card_mod:
+  style: |
+    ha-card {
+      box-shadow: 0 0 0 2px gray;
+    }
+cards:
+  - type: markdown
+    content: |2
+        {% if is_number(states('sensor.shawinigan_advisory')) and states('sensor.shawinigan_advisory') | int == 0 and 
+              is_number(states('sensor.shawinigan_statements')) and states('sensor.shawinigan_statements') | int == 0 and 
+              is_number(states('sensor.shawinigan_warnings')) and states('sensor.shawinigan_warnings') | int == 0 and 
+              is_number(states('sensor.shawinigan_watches')) and states('sensor.shawinigan_watches') | int == 0 and 
+              is_number(states('sensor.shawinigan_endings')) and states('sensor.shawinigan_endings') | int == 0  %}
+
+                <ha-alert alert-type="info">Aucune alerte présentement</ha-alert>
+                                       
+        {% else %}
+            {% set x = [ 'sensor.shawinigan_advisory', 'sensor.shawinigan_statements', 'sensor.shawinigan_warnings', 'sensor.shawinigan_watches', 'sensor.shawinigan_endings' ] %}
+
+            {% for state in states.sensor if state.entity_id in x %}
+              {% for attr in state.attributes %}
+                {%- if attr.startswith('alert_') %}
+                  {%- if attr.startswith('alert_time_') %}
+                      {{ state_attr(state.entity_id, attr) }}</ha-alert>
+                  {% else %}
+                      {{'\n'}}<ha-alert alert-type="warning" title="{{ state_attr(state.entity_id,'friendly_name') }}">{{ state_attr(state.entity_id, attr) }}
+                  {%- endif %}
+                {%- endif %}
+              {%- endfor %}
+            {% endfor %}
+        {% endif %}

@@ -1,0 +1,152 @@
+title: Personnes
+path: Sous-vue-personnes
+icon: mdi:account
+theme: !include ../Cartes/Carte-Theme.yaml
+subview: false
+type: sections
+max_columns: 2
+cards: []
+sections:
+  - type: grid
+    cards:
+      - type: heading
+        heading: Valérie
+        heading_style: title
+        icon: mdi:account
+      - type: entities
+        entities:
+          - entity: person.valerie
+          - entity: sensor.life360_pile_tel_valerie
+            name: Piles
+            icon: mdi:battery
+          - entity: sensor.life360_pile_tel_en_charge_valerie
+            name: Charge
+            icon: mdi:flash
+          - entity: sensor.life360_en_deplacement_valerie
+            name: Déplacement
+            icon: mdi:car
+          - entity: sensor.life360_vitesse_valerie
+            name: Vitesse
+            icon: mdi:speedometer
+        layout_options:
+          grid_columns: 2
+          grid_rows: 4
+      - type: map
+        entities:
+          - entity: person.valerie
+        theme_mode: dark
+        layout_options:
+          grid_columns: 2
+          grid_rows: 4
+        hours_to_show: 72
+        default_zoom: 11
+      - type: heading
+        heading: Claude
+        heading_style: title
+        icon: mdi:account
+      - type: entities
+        entities:
+          - entity: person.claude
+          - entity: sensor.life360_pile_tel_claude
+            name: Piles
+            icon: mdi:battery
+          - entity: sensor.life360_pile_tel_en_charge_claude
+            name: Charge
+            icon: mdi:flash
+          - entity: sensor.life360_en_deplacement_claude
+            name: Déplacement
+            icon: mdi:car
+          - entity: sensor.life360_vitesse_claude
+            name: Vitesse
+            icon: mdi:speedometer
+        layout_options:
+          grid_columns: 2
+          grid_rows: 4
+      - type: map
+        entities:
+          - entity: person.claude
+        theme_mode: dark
+        layout_options:
+          grid_columns: 2
+          grid_rows: 4
+        hours_to_show: 72
+        default_zoom: 11
+  - type: grid
+    cards:
+      - type: heading
+        heading: Brigitte
+        heading_style: title
+        icon: mdi:account
+      - type: entities
+        entities:
+          - entity: person.brigitte
+          - entity: sensor.life360_pile_tel_brigitte
+            name: Piles
+            icon: mdi:battery
+          - entity: sensor.life360_pile_tel_en_charge_valerie
+            name: Charge
+            icon: mdi:flash
+          - entity: sensor.life360_en_deplacement_brigitte
+            name: Déplacement
+            icon: mdi:car
+          - entity: sensor.life360_vitesse_brigitte
+            name: Vitesse
+            icon: mdi:speedometer
+        layout_options:
+          grid_columns: 2
+          grid_rows: 4
+      - type: map
+        entities:
+          - entity: person.brigitte
+        theme_mode: dark
+        layout_options:
+          grid_columns: 2
+          grid_rows: 4
+        hours_to_show: 72
+        default_zoom: 11
+      - type: heading
+        heading_style: title
+        icon: mdi:account
+        heading: Michel
+      - type: entities
+        entities:
+          - entity: person.michel
+          - entity: sensor.life360_pile_tel_michel
+            name: Piles
+            icon: mdi:battery
+          - entity: sensor.life360_pile_tel_en_charge_michel
+            name: Charge
+            icon: mdi:flash
+          - entity: sensor.life360_en_deplacement_michel
+            name: Déplacement
+            icon: mdi:car
+          - entity: sensor.life360_vitesse_michel
+            name: Vitesse
+            icon: mdi:speedometer
+        layout_options:
+          grid_columns: 2
+          grid_rows: 4
+      - type: map
+        entities:
+          - entity: person.michel
+        theme_mode: dark
+        layout_options:
+          grid_columns: 2
+          grid_rows: 4
+        hours_to_show: 72
+        default_zoom: 11
+badges:
+  - type: entity
+    entity: person.valerie
+    name: Valérie
+    show_entity_picture: true
+  - type: entity
+    entity: person.brigitte
+    show_entity_picture: true
+    name: Brigitte
+  - type: entity
+    entity: person.claude
+    show_entity_picture: true
+  - type: entity
+    entity: person.michel
+    show_entity_picture: true

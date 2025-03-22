@@ -1,0 +1,127 @@
+type: custom:vertical-stack-in-card
+cards:
+  - type: horizontal-stack
+    cards:
+      - type: custom:mushroom-template-card
+        secondary: "{{states('sensor.minmax_temperature_max_mois')}} ℃"
+        icon: mdi:thermometer
+        icon_color: red
+        fill_container: true
+        layout: vertical
+        tap_action:
+          action: none
+        hold_action:
+          action: none
+        double_tap_action:
+          action: none
+        card_mod:
+          style:
+            mushroom-state-info $: |
+              .container {
+              --card-secondary-font-size: 18px;
+              }
+      - type: custom:mushroom-template-card
+        secondary: >
+          {{ as_timestamp(states('sensor.minmax_temperature_max_mois_time'))  |
+          timestamp_custom('%d-%m-%Y') }}
+        icon: mdi:calendar-month
+        icon_color: red
+        fill_container: true
+        layout: vertical
+        tap_action:
+          action: none
+        hold_action:
+          action: none
+        double_tap_action:
+          action: none
+        card_mod:
+          style:
+            mushroom-state-info $: |
+              .container {
+              --card-secondary-font-size: 18px;
+              }
+      - type: custom:mushroom-template-card
+        secondary: >
+          {{ as_timestamp(states('sensor.minmax_temperature_max_mois_time'))  |
+          timestamp_custom('%H h %M') }}
+        icon: mdi:clock-time-four-outline
+        icon_color: red
+        fill_container: true
+        layout: vertical
+        tap_action:
+          action: none
+        hold_action:
+          action: none
+        double_tap_action:
+          action: none
+        card_mod:
+          style:
+            mushroom-state-info $: |
+              .container {
+              --card-secondary-font-size: 18px;
+              }
+  - type: horizontal-stack
+    cards:
+      - type: custom:mushroom-template-card
+        secondary: "{{states('sensor.minmax_temperature_min_mois')}} ℃"
+        icon: mdi:thermometer
+        icon_color: blue
+        fill_container: true
+        layout: vertical
+        tap_action:
+          action: none
+        hold_action:
+          action: none
+        double_tap_action:
+          action: none
+        card_mod:
+          style:
+            mushroom-state-info $: |
+              .container {
+              --card-secondary-font-size: 18px;
+              }
+      - type: custom:mushroom-template-card
+        secondary: >
+          {{ as_timestamp(states('sensor.minmax_temperature_min_mois_time'))  |
+          timestamp_custom('%d-%m-%Y') }}
+        icon: mdi:calendar-month
+        icon_color: blue
+        fill_container: true
+        layout: vertical
+        tap_action:
+          action: none
+        hold_action:
+          action: none
+        double_tap_action:
+          action: none
+        card_mod:
+          style:
+            mushroom-state-info $: |
+              .container {
+              --card-secondary-font-size: 18px;
+              }
+      - type: custom:mushroom-template-card
+        secondary: >
+          {{ as_timestamp(states('sensor.minmax_temperature_min_mois_time'))  |
+          timestamp_custom('%H h %M') }}
+        icon: mdi:clock-time-four-outline
+        icon_color: blue
+        fill_container: true
+        layout: vertical
+        tap_action:
+          action: none
+        hold_action:
+          action: none
+        double_tap_action:
+          action: none
+        card_mod:
+          style:
+            mushroom-state-info $: |
+              .container {
+              --card-secondary-font-size: 18px;
+              }
+card_mod:
+  style: |
+    ha-card {
+      box-shadow: 0 0 0 2px gray;
+    }

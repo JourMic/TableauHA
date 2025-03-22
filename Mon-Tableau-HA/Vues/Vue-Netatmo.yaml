@@ -1,0 +1,179 @@
+title: Netatmo
+path: Sous-vue-netatmo
+icon: mdi:home-circle-outline
+theme: !include ../Cartes/Carte-Theme.yaml
+subview: false
+type: sections
+max_columns: 2
+cards: []
+sections:
+  - type: grid
+    cards:
+      - type: heading
+        heading: Observations par unitées
+        heading_style: title
+        icon: mdi:eye-settings
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+      - show_name: true
+        show_icon: true
+        show_state: true
+        type: glance
+        entities:
+          - entity: sensor.maison_pression_atmospherique
+            name: Pression
+          - entity: sensor.maison_temperature
+            name: Température
+          - entity: sensor.maison_humidite
+            name: Humidité
+          - entity: sensor.maison_bruit
+            name: Bruit
+        columns: 4
+        state_color: true
+        layout_options:
+          grid_columns: 4
+          grid_rows: 3
+        title: Salon
+      - show_name: true
+        show_icon: true
+        show_state: true
+        type: glance
+        entities:
+          - entity: sensor.maison_chambre_des_maitres_temperature
+            name: Température
+          - entity: sensor.netatmo_traduire_tendance_temperature_chambre_maitres
+            name: Tendance
+            icon: mdi:thermometer
+          - entity: sensor.maison_chambre_des_maitres_humidite
+            name: humidité
+          - entity: sensor.maison_chambre_des_maitres_batterie
+            name: Pile
+        columns: 4
+        state_color: true
+        layout_options:
+          grid_columns: 4
+          grid_rows: 3
+        title: Chambre des maîtres
+      - show_name: true
+        show_icon: true
+        show_state: true
+        type: glance
+        entities:
+          - entity: sensor.maison_bureau_temperature
+            name: Température
+          - entity: sensor.netatmo_traduire_tendance_temperature_bureau
+            name: Tendance
+            icon: mdi:thermometer
+          - entity: sensor.maison_bureau_humidite
+            name: humidité
+          - entity: sensor.maison_bureau_batterie
+            name: Pile
+        columns: 4
+        state_color: true
+        layout_options:
+          grid_columns: 4
+          grid_rows: 3
+        title: Bureau
+  - type: grid
+    cards:
+      - type: heading
+        heading: Dioxyde de carbone
+        heading_style: title
+        icon: mdi:molecule-co2
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+      - graph: line
+        type: sensor
+        detail: 2
+        entity: sensor.maison_dioxyde_de_carbone
+        name: Salon
+        hours_to_show: 24
+      - graph: line
+        type: sensor
+        detail: 2
+        entity: sensor.maison_chambre_des_maitres_dioxyde_de_carbone
+        name: Chambre des maîtres
+        hours_to_show: 24
+        layout_options:
+          grid_columns: 2
+          grid_rows: 2
+      - type: tile
+        name: État Salon
+        icon: mdi:molecule-co2
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+        entity: sensor.netatmo_salon_co2_text
+      - type: tile
+        name: État chambre
+        icon: mdi:molecule-co2
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+        entity: sensor.netatmo_chambre_maitres_co2_text
+      - graph: line
+        type: sensor
+        detail: 2
+        entity: sensor.maison_bureau_dioxyde_de_carbone
+        name: Bureau
+        hours_to_show: 24
+      - graph: line
+        type: sensor
+        detail: 2
+        entity: sensor.maison_sous_sol_dioxyde_de_carbone
+        name: Sous-Sol
+        hours_to_show: 24
+      - type: tile
+        name: État bureau
+        icon: mdi:molecule-co2
+        hide_state: false
+        vertical: false
+        show_entity_picture: false
+        entity: sensor.netatmo_bureau_co2_text
+      - type: tile
+        name: État Sous-sol
+        icon: mdi:molecule-co2
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+        entity: sensor.netatmo_sous_sol_co2_text
+      - show_name: true
+        show_icon: true
+        show_state: true
+        type: glance
+        entities:
+          - entity: sensor.maison_sous_sol_temperature
+            name: Température
+          - entity: sensor.netatmo_traduire_tendance_temperature_sous_sol
+            name: Tendance
+            icon: mdi:thermometer
+          - entity: sensor.maison_sous_sol_humidite
+            name: humidité
+          - entity: sensor.maison_sous_sol_batterie
+            name: Pile
+        columns: 4
+        state_color: true
+        layout_options:
+          grid_columns: 4
+          grid_rows: 3
+        title: Sous-Sol
+badges:
+  - type: entity
+    entity: sensor.maison_thermopompe_temperature
+    display_type: complete
+    name: Thermopompe
+  - type: entity
+    entity: sensor.netatmo_traduire_tendance_temperature_thermopompe
+    display_type: complete
+    name: Tendance
+    icon: mdi:thermometer-alert
+  - type: entity
+    entity: sensor.maison_thermopompe_humidite
+    display_type: complete
+    name: Himidité
+  - type: entity
+    entity: sensor.maison_thermopompe_batterie
+    display_type: complete
+    name: Pile

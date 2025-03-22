@@ -1,0 +1,225 @@
+type: custom:vertical-stack-in-card
+card_mod:
+  style: |
+    ha-card {
+      box-shadow: 0 0 0 2px gray;
+    }
+cards:
+  - type: heading
+    heading: IQA / AQHI
+    heading_style: title
+    icon: ios:aqi-high
+  - type: entities
+    entities:
+      - type: custom:multiple-entity-row
+        entity: sensor.iqa_text_shawinigan
+        icon: mdi:state-machine
+        name: Description
+        show_state: true
+        secondary_info: last-changed
+      - type: custom:bar-card
+        entity_row: true
+        positions:
+          name: outside
+          value: inside
+          indicator: outside
+        entities:
+          - entity: sensor.iqa_numeric_shawinigan
+            icon: mdi:air-filter
+            name: IQA
+            severity:
+              - color: "#669D34"
+                from: 0
+                to: 25
+              - color: "#FED709"
+                from: 26
+                to: 50
+              - color: "#FF4015"
+                from: 51
+                to: 75
+          - entity: sensor.shawinigan_aqhi
+            icon: mdi:weather-windy
+            name: AQHI
+            severity:
+              - color: "#669D34"
+                from: 0
+                to: 3
+              - color: "#FED709"
+                from: 4
+                to: 7
+              - color: "#E22400"
+                from: 8
+                to: 11
+              - color: "#831100"
+                from: 12
+                to: 15
+  - type: heading
+    heading: Évolution IQA
+    heading_style: title
+    icon: mdi:state-machine
+  - type: custom:mini-graph-card
+    entities:
+      - entity: sensor.iqa_numeric_shawinigan
+    hours_to_show: 48
+    points_per_hour: 1
+    height: 100
+    hour24: true
+    icon: mdi:air-purifier
+    show:
+      extrema: true
+      name: false
+      icon: false
+      graph: bar
+    color_thresholds:
+      - value: 0
+        color: "#669D34"
+      - value: 1
+        color: "#6C9F32"
+      - value: 2
+        color: "#72A130"
+      - value: 3
+        color: "#78A32E"
+      - value: 4
+        color: "#7EA62D"
+      - value: 5
+        color: "#84A82B"
+      - value: 6
+        color: "#8AAA29"
+      - value: 7
+        color: "#90AD27"
+      - value: 8
+        color: "#96AF26"
+      - value: 9
+        color: "#9CB124"
+      - value: 10
+        color: "#A2B422"
+      - value: 11
+        color: "#A8B621"
+      - value: 12
+        color: "#AEB81F"
+      - value: 13
+        color: "#B5BB1D"
+      - value: 14
+        color: "#BBBD1B"
+      - value: 15
+        color: "#C1BF1A"
+      - value: 16
+        color: "#C7C218"
+      - value: 17
+        color: "#CDC416"
+      - value: 18
+        color: "#D3C615"
+      - value: 19
+        color: "#D9C913"
+      - value: 20
+        color: "#DFCB11"
+      - value: 21
+        color: "#E5CD0F"
+      - value: 22
+        color: "#EBD00E"
+      - value: 23
+        color: "#F1D20C"
+      - value: 24
+        color: "#F7D40A"
+      - value: 25
+        color: "#FED709"
+      - value: 26
+        color: "#FED208"
+      - value: 27
+        color: "#FECE08"
+      - value: 28
+        color: "#FEC907"
+      - value: 29
+        color: "#FEC507"
+      - value: 30
+        color: "#FEC107"
+      - value: 31
+        color: "#FEBC06"
+      - value: 32
+        color: "#FEB806"
+      - value: 33
+        color: "#FEB406"
+      - value: 34
+        color: "#FEAF05"
+      - value: 35
+        color: "#FEAB05"
+      - value: 36
+        color: "#FEA705"
+      - value: 37
+        color: "#FEA204"
+      - value: 38
+        color: "#FE9E04"
+      - value: 39
+        color: "#FE9903"
+      - value: 40
+        color: "#FE9503"
+      - value: 41
+        color: "#FE9103"
+      - value: 42
+        color: "#FE8C02"
+      - value: 43
+        color: "#FE8802"
+      - value: 44
+        color: "#FE8402"
+      - value: 45
+        color: "#FE7F01"
+      - value: 46
+        color: "#FE7B01"
+      - value: 47
+        color: "#FE7701"
+      - value: 48
+        color: "#FE7200"
+      - value: 49
+        color: "#FE6E00"
+      - value: 50
+        color: "#FF6A00"
+      - value: 51
+        color: "#FD6700"
+      - value: 52
+        color: "#FC6400"
+      - value: 53
+        color: "#FB6100"
+      - value: 54
+        color: "#FA5E00"
+      - value: 55
+        color: "#F95C00"
+      - value: 56
+        color: "#F85900"
+      - value: 57
+        color: "#F65600"
+      - value: 58
+        color: "#F55300"
+      - value: 59
+        color: "#F45000"
+      - value: 60
+        color: "#F34E00"
+      - value: 61
+        color: "#F24B00"
+      - value: 62
+        color: "#F14800"
+      - value: 63
+        color: "#EF4500"
+      - value: 64
+        color: "#EE4200"
+      - value: 65
+        color: "#ED4000"
+      - value: 66
+        color: "#EC3D00"
+      - value: 67
+        color: "#EB3A00"
+      - value: 68
+        color: "#EA3700"
+      - value: 69
+        color: "#E83400"
+      - value: 70
+        color: "#E73200"
+      - value: 71
+        color: "#E62F00"
+      - value: 72
+        color: "#E52C00"
+      - value: 73
+        color: "#E42900"
+      - value: 74
+        color: "#E32600"
+      - value: 75
+        color: "#E22400"

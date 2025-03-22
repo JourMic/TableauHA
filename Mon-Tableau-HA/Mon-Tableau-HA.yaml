@@ -1,0 +1,40 @@
+## Tableau de bord Mon tableau HA
+
+decluttering_templates: !include Templates/decluttering-templates.yaml
+
+title: Mon Tableau HA V2
+
+views:
+  # Vues principale
+
+  - !include Vues-Pincipales/Vue-Principale.yaml
+
+  # Vues pièces
+
+  - !include Vues-Pincipales/Vue-Rez-De-Chausse.yaml
+  - !include Vues-Pincipales/Vue-Deuxieme.yaml
+  - !include Vues-Pincipales/Vue-Sous-sol.yaml
+  - !include Vues-Pincipales/Vue-Exterieur.yaml
+
+  # Vues pages
+
+#  - !include Vues/Vue-Calendrier.yaml
+  - !include Vues/Vue-Hydro-Quebec.yaml
+  - !include Vues/Vue-Meteo.yaml
+  - !include Vues/Vue-Piles.yaml
+  - !include Vues/Vue-Netatmo.yaml
+  - !include Vues/Vue-Formule-Un.yaml
+#  - !include Vues/Vue-Personnes.yaml
+  - !include Vues/Vue-Statut.yaml
+#  - !include Vues/Vue-Tests.yaml
+
+  # Sous Vues
+
+  - !include Sous-Vues/Sous-Vue-Hilo-1.yaml
+  - !include Sous-Vues/Sous-Vue-Hilo-2.yaml
+  - !include Sous-Vues/Sous-Vue-Hilo-3.yaml
+  - !include Sous-Vues/Sous-Vue-Hilo-4.yaml
+  - !include Sous-Vues/Sous-Vue-Consommation-1.yaml
+  - !include Sous-Vues/Sous-Vue-Consommation-2.yaml
+  - !include Sous-Vues/Sous-Vue-Consommation-3.yaml
+  - !include Sous-Vues/Sous-Vue-Consommation-4.yaml

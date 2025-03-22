@@ -1,0 +1,136 @@
+type: custom:vertical-stack-in-card
+cards:
+  - type: custom:mini-graph-card
+    entities:
+      - sensor.tempest_st_00032986_rain_today
+    name: Pluie Aujourd'hui
+    hours_to_show: 24
+    points_per_hour: 2
+    hour24: true
+    show:
+      labels: false
+      graph: bar
+      extrema: false
+    color_thresholds:
+      - value: 0
+        color: green
+      - value: 10
+        color: yellow
+      - value: 20
+        color: red
+  - type: custom:apexcharts-card
+    graph_span: 12month
+    span:
+      end: month
+      offset: "-0d"
+    header:
+      show: true
+      show_states: true
+    apex_config:
+      fill:
+        type: gradient
+        gradient:
+          type: vertical
+          shadeIntensity: 0
+          opacityFrom: 1
+          opacityTo: 0.5
+          stops: 10
+      chart:
+        height: 150px
+      grid:
+        show: false
+        borderColor: darkslateblue
+        strokeDashArray: 2
+      dataLabels:
+        background:
+          borderWidth: 0
+          opacity: 0
+          foreColor: white
+        offsetY: -10
+      plotOptions:
+        bar:
+          borderRadius: 0
+          dataLabels:
+            position: top
+      xaxis:
+        tooltip:
+          enabled: false
+    series:
+      - entity: sensor.tempest_st_00032986_rain_today
+        name: Pluie par mois
+        color: deepskyblue
+        type: column
+        group_by:
+          func: sum
+          duration: 1month
+          fill: zero
+        statistics:
+          type: state
+          period: day
+          align: start
+        show:
+          name_in_header: true
+          datalabels: true
+          in_chart: true
+          legend_value: false
+          extremas: false
+      - entity: sensor.tempest_st_00032986_rain_today
+        name: Pluie ces 12 derniers mois
+        color: deepskyblue
+        type: column
+        group_by:
+          func: sum
+          duration: 12month
+          fill: zero
+        statistics:
+          type: state
+          period: day
+          align: end
+        show:
+          name_in_header: true
+          datalabels: false
+          in_chart: false
+          legend_value: false
+  - type: horizontal-stack
+    cards:
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.tempest_st_00032986_rain_rate
+        name: Taux Aujourd'hui
+        hours_to_show: 24
+        points_per_hour: 2
+        hour24: true
+        show:
+          labels: false
+          graph: area
+          extrema: false
+        color_thresholds:
+          - value: 0
+            color: green
+          - value: 5
+            color: yellow
+          - value: 10
+            color: red
+      - type: custom:mini-graph-card
+        entities:
+          - sensor.tempest_st_00032986_rain_yesterday
+        name: Pluie Hier
+        hours_to_show: 24
+        points_per_hour: 2
+        hour24: true
+        show:
+          labels: false
+          graph: area
+          extrema: false
+        color_thresholds:
+          - value: 0
+            color: green
+          - value: 10
+            color: yellow
+          - value: 20
+            color: red
+card_mod:
+  style: |
+    ha-card {
+      box-shadow: 0 0 0 2px gray;
+    }

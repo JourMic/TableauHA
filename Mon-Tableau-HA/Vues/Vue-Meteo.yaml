@@ -1,0 +1,149 @@
+title: Météo
+path: Sous-vue-meteo
+icon: mdi:weather-partly-lightning
+theme: !include ../Cartes/Carte-Theme.yaml
+subview: false
+type: sections
+max_columns: 2
+cards: []
+sections:
+  - type: grid
+    cards:
+      - type: heading
+        heading_style: title
+        icon: mdi:weather-partly-snowy-rainy
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+        heading: Prévisions
+      - !include ..//Cartes/Carte-Meteo.yaml
+
+  - type: grid
+    cards:
+      - type: heading
+        heading: Carte
+        heading_style: title
+        icon: mdi:map
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+      - camera_view: auto
+        type: picture-glance
+        entities: []
+        camera_image: camera.shawinigan_radar
+        layout_options:
+          grid_columns: 4
+          grid_rows: 7
+
+badges:
+
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    color: ""
+    entity: sensor.tempest_st_00032986_battery
+    name: Pile Tempest
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Statut de la station météo Tempest
+          content:
+            type: entities
+            entities:
+              - !include ../Cartes-Pop-Up/PopUp-Tempest.yaml
+              
+
+  - type: custom:mushroom-template-badge
+    content: >-
+          {{states('sensor.minmax_temperature_max_jour')}} ℃" /
+          {{states('sensor.minmax_temperature_min_jour')}} ℃
+    icon: mdi:calendar-today-outline
+    color: red
+    label: Max Min Journée
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Statut de la station météo Tempest
+          content:
+            type: entities
+            entities:
+              - !include ../Cartes-Pop-Up/PopUp-Temperature-Min-Max-Jour.yaml
+              
+  - type: custom:mushroom-template-badge
+    content: >-
+          {{states('sensor.minmax_temperature_max_mois')}} ℃"
+          /{{states('sensor.minmax_temperature_min_mois')}} ℃
+    icon: mdi:calendar-month
+    color: yellow
+    label: Max Min Mensuel
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Statut de la station météo Tempest
+          content:
+            type: entities
+            entities:
+              - !include ../Cartes-Pop-Up/PopUp-Temperature-Min-Max-Mois.yaml
+              
+  - type: custom:mushroom-template-badge
+    content: >-
+          {{states('sensor.minmax_temperature_maximum')}} ℃ /
+          {{states('sensor.minmax_temperature_minimum')}} ℃
+    icon: mdi:overscan
+    color: blue
+    label: 'Maximum / Minimum '
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Statut de la station météo Tempest
+          content:
+            type: entities
+            entities:
+              - !include ../Cartes-Pop-Up/PopUp-Temperature-Minimum-Maximum.yaml
+              
+  - type: entity
+    show_name: true
+    show_state: true
+    show_icon: true
+    color: orange
+    entity: sensor.tempest_st_00032986_lightning_count_today
+    name: Éclaires
+    visibility:
+      - condition: state
+        entity: sensor.tempest_st_00032986_lightning_count_today
+        state_not: "0"
+    tap_action:
+      action: fire-dom-event
+      browser_mod:
+        service: browser_mod.popup
+        data:
+          title: Nombre et distance des éclaires
+          content:
+            type: entities
+            entities:
+              - !include ../Cartes-Pop-Up/PopUp-Eclaires.yaml
+              
+  - type: custom:mushroom-template-badge
+    content: |-
+      {{states('sensor.tempest_st_00032986_uv_level')}} /
+      {{states('sensor.tempest_st_00032986_uv_index')}} UV / 
+      {{states('sensor.tempest_st_00032986_illuminance')}} lx
+    icon: mdi:sun-wireless
+    color: cyan
+    label: Luminosité
+    tap_action:
+      action: none
+    hold_action:
+      action: none
+    double_tap_action:
+      action: none
+

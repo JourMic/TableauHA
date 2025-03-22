@@ -1,0 +1,245 @@
+title: Deuxième
+path: Vue-deuxieme
+icon: mdi:home-floor-2
+theme: !include ../Cartes/Carte-Theme.yaml
+subview: false
+type: sections
+max_columns: 2
+cards: []
+sections:
+  - type: grid
+    cards:
+      - type: heading
+        icon: mdi:bed-king
+        heading: Chambre des maîtres
+        heading_style: title
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+        entities:
+          - show_state: true
+            show_icon: true
+            entity: sensor.maison_chambre_des_maitres_temperature
+            color: accent
+          - show_state: true
+            show_icon: true
+            entity: sensor.maison_chambre_des_maitres_humidite
+            color: blue
+      - features:
+          - type: target-temperature
+        type: tile
+        entity: climate.neviweb130_climate_ch_maitres
+        name: Chauffage
+        color: green
+        state_content:
+          - current_temperature
+          - hvac_action
+          - daily_kwh
+      - type: tile
+        entity: light.brilliant_chambre_maitres_chambre_maitres_light
+        name: Plafond
+        color: light-blue
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+      - type: tile
+        entity: light.chevets
+        name: Lampes de chevets
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+      - type: heading
+        icon: mdi:desk
+        heading_style: title
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+        entities:
+          - show_state: true
+            show_icon: true
+            entity: sensor.maison_bureau_temperature
+            color: accent
+          - show_state: true
+            show_icon: true
+            entity: sensor.maison_bureau_humidite
+            color: blue
+        heading: Bureau
+      - features:
+          - type: target-temperature
+        type: tile
+        entity: climate.neviweb130_climate_bureau
+        name: Chauffage
+        color: yellow
+        state_content:
+          - current_temperature
+          - hvac_action
+          - monthly_kwh
+        layout_options:
+          grid_columns: 2
+          grid_rows: 2
+      - type: tile
+        entity: light.neviweb130_light_bureau
+        name: Plafond
+        color: red
+        icon: hue:ceiling-buratto-four
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+      - type: tile
+        entity: light.neviweb130_light_garde_robe_bureau
+        icon: hue:ceiling-beyond-alt
+        color: deep-purple
+        name: Garde-Robes
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+      - type: tile
+        entity: sensor.canon_pro_100_series
+        name: Imprimante
+        color: lime
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+      - type: tile
+        entity: switch.neviweb130_switch_ordinateur
+        name: Ordinateur
+        color: grey
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+      - type: tile
+        entity: vacuum.roomba_deux
+        name: Aspirateur
+        color: light-blue
+        features:
+          - type: vacuum-commands
+            commands:
+              - start_pause
+              - stop
+              - locate
+        layout_options:
+          grid_columns: 4
+          grid_rows: 2
+      - features:
+          - type: alarm-modes
+        type: tile
+        entity: alarm_control_panel.blink_ca_exterieures
+        show_entity_picture: true
+        name: Caméras Extérieure
+        layout_options:
+          grid_columns: 2
+          grid_rows: 2
+      - features:
+          - type: alarm-modes
+        type: tile
+        entity: alarm_control_panel.blink_ca_interieures
+        show_entity_picture: true
+        name: Caméras Intérieure
+        layout_options:
+          grid_columns: 2
+          grid_rows: 2
+  - type: grid
+    cards:
+      - type: heading
+        icon: mdi:bathtub
+        heading_style: title
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+        entities:
+          - show_state: true
+            show_icon: true
+            color: accent
+            entity: sensor.govee_salle_de_bain_temperature
+          - show_state: true
+            show_icon: true
+            entity: sensor.govee_salle_de_bain_humidity
+            color: blue
+          - entity: binary_sensor.detecteur_de_fuites_salle_de_bain_humidite
+        heading: Salle de bain
+      - features:
+          - type: target-temperature
+        type: tile
+        entity: climate.neviweb130_climate_salle_bain
+        name: Chauffage
+        color: purple
+        state_content:
+          - current_temperature
+          - hvac_action
+          - monthly_kwh
+      - type: tile
+        entity: light.salle_de_bain
+        name: Huche
+        icon: hue:ceiling-adore
+        color: light-green
+        layout_options:
+          grid_columns: 2
+          grid_rows: 2
+      - type: tile
+        entity: binary_sensor.detecteur_de_fuites_salle_de_bain_humidite
+        name: Fuite toilette
+        color: teal
+        layout_options:
+          grid_columns: 4
+          grid_rows: 1
+      - type: heading
+        icon: mdi:sofa-single
+        heading_style: title
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+        entities:
+          - show_state: true
+            show_icon: true
+            entity: sensor.sensibo_temperature_courante_salle_de_repos
+            color: accent
+          - show_state: true
+            show_icon: true
+            entity: sensor.sensibo_humiditee_courante_salle_de_repos
+            color: blue
+          - entity: binary_sensor.detecteur_de_fuites_laveuse_humidite
+        heading: "Salle de repos "
+      - features:
+          - type: target-temperature
+          - type: climate-hvac-modes
+        type: tile
+        entity: climate.salle_de_repos
+        color: red
+        state_content:
+          - temperature
+          - state
+        name: Sensibo
+        layout_options:
+          grid_columns: 2
+          grid_rows: 4
+      - features:
+          - type: target-temperature
+        type: tile
+        entity: climate.neviweb130_climate_salle_repos
+        color: amber
+        layout_options:
+          grid_columns: 2
+          grid_rows: 4
+        name: Sinopé
+        state_content:
+          - current_temperature
+          - hvac_action
+          - monthly_kwh
+      - type: tile
+        entity: switch.salle_de_repos
+        name: Plafond
+        color: cyan
+        layout_options:
+          grid_columns: 2
+          grid_rows: 2
+      - type: tile
+        entity: binary_sensor.detecteur_de_fuites_laveuse_humidite
+        name: Fuites laveuse
+        color: red
+        layout_options:
+          grid_columns: 2
+          grid_rows: 1
+      - type: tile
+        entity: binary_sensor.hue_motion_sensor_1_mouvement
+        name: Mouvements
+        color: deep-purple

@@ -1,0 +1,175 @@
+type: custom:vertical-stack-in-card
+card_mod:
+  style: |
+    ha-card {
+      box-shadow: 0 0 0 2px gray;
+    }
+cards:
+  - type: custom:mushroom-template-card
+    primary: "{{ states('sensor.tempest_st_00032986_battery_mode') }}"
+    secondary: "{{ states('sensor.weatherflow_mode_descption') }}"
+    icon: mdi:abacus
+    multiline_secondary: true
+    fill_container: true
+    tap_action:
+      action: none
+    hold_action:
+      action: none
+    double_tap_action:
+      action: none
+
+  - type: custom:apexcharts-card
+    experimental:
+      color_threshold: true
+    graph_span: 72h
+    show:
+      last_updated: false
+    header:
+      standard_format: false
+      show: true
+      show_states: true
+      colorize_states: true
+      title: Station Tempest
+    apex_config:
+      chart:
+        height: 190px
+    span:
+      start: day
+    yaxis:
+      - id: pile
+        decimals: 0
+        apex_config:
+          tickAmount: 5
+        max: 100
+        min: 0
+    series:
+      - entity: sensor.tempest_st_00032986_battery
+        yaxis_id: pile
+        type: area
+        group_by:
+          func: last
+          duration: 15m
+        stroke_width: 5
+        show:
+          header_color_threshold: true
+        color_threshold:
+          - value: 0
+            color: "#FF453A"
+          - value: 5
+            color: "#FE5335"
+          - value: 10
+            color: "#FE6230"
+          - value: 15
+            color: "#FE702B"
+          - value: 20
+            color: "#FE7F26"
+          - value: 25
+            color: "#FE8E21"
+          - value: 30
+            color: "#FE9C1C"
+          - value: 35
+            color: "#FEAB17"
+          - value: 40
+            color: "#FEB912"
+          - value: 45
+            color: "#FEC80D"
+          - value: 50
+            color: "#FED709"
+          - value: 55
+            color: "#EBD10F"
+          - value: 60
+            color: "#D8CC15"
+          - value: 65
+            color: "#C6C61B"
+          - value: 70
+            color: "#B3C121"
+          - value: 75
+            color: "#A1BB28"
+          - value: 80
+            color: "#8EB62E"
+          - value: 85
+            color: "#7BB034"
+          - value: 90
+            color: "#69AB3A"
+          - value: 95
+            color: "#56A540"
+          - value: 100
+            color: "#44A047"
+
+  - type: custom:apexcharts-card
+    experimental:
+      color_threshold: true
+    graph_span: 72h
+    show:
+      last_updated: false
+    header:
+      standard_format: false
+      show: true
+      show_states: true
+      colorize_states: true
+      title: Station Tempest
+    span:
+      start: day
+    apex_config:
+      chart:
+        height: 190px
+    yaxis:
+      - id: pile
+        decimals: 0
+        apex_config:
+          tickAmount: 4
+        max: 4
+        min: 0
+    series:
+      - entity: sensor.tempest_st_00032986_voltage
+        yaxis_id: pile
+        type: area
+        group_by:
+          func: last
+          duration: 15m
+        stroke_width: 3
+        show:
+          header_color_threshold: true
+        color_threshold:
+          - value: 0
+            color: "#FF453A"
+          - value: 0.2
+            color: "#FE5335"
+          - value: 0.4
+            color: "#FE6230"
+          - value: 0.6
+            color: "#FE702B"
+          - value: 0.8
+            color: "#FE7F26"
+          - value: 1
+            color: "#FE8E21"
+          - value: 1.2
+            color: "#FE9C1C"
+          - value: 1.4
+            color: "#FEAB17"
+          - value: 1.6
+            color: "#FEB912"
+          - value: 1.8
+            color: "#FEC80D"
+          - value: 2
+            color: "#FED709"
+          - value: 2.2
+            color: "#EBD10F"
+          - value: 2.4
+            color: "#D8CC15"
+          - value: 2.6
+            color: "#C6C61B"
+          - value: 2.8
+            color: "#B3C121"
+          - value: 3
+            color: "#A1BB28"
+          - value: 3.2
+            color: "#8EB62E"
+          - value: 3.4
+            color: "#7BB034"
+          - value: 3.6
+            color: "#69AB3A"
+          - value: 3.8
+            color: "#56A540"
+          - value: 4
+            color: "#44A047"

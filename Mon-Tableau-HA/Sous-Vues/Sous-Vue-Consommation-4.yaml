@@ -1,0 +1,223 @@
+title: Énergie chauffage
+path: Sous-vue-consommation-4
+icon: mdi:graph
+theme: !include ../Cartes/Carte-Theme.yaml
+subview: true
+type: sections
+max_columns: 3
+cards: []
+sections:
+      - type: grid
+        cards:
+          - type: heading
+            heading_style: title
+            grid_options:
+              columns: full
+              rows: 1
+            heading: Rez-de-chaussée
+            icon: mdi:home-floor-1
+          - type: heading
+            heading: Salon
+            heading_style: title
+            grid_options:
+              columns: full
+              rows: 1
+            icon: mdi:sofa
+          - type: glance
+            entities:
+              - entity: sensor.salon_hilo_energy
+                name: Énergie utilisé
+              - entity: sensor.salon_hilo_energy_low
+                name: Énergie Bas
+              - entity: sensor.salon_hilo_energy_medium
+                name: Énergie Haut
+            grid_options:
+              columns: 12
+              rows: 2
+          - type: heading
+            heading_style: title
+            heading: Cuisine
+            grid_options:
+              columns: full
+              rows: 1
+            icon: mdi:stove
+          - type: glance
+            entities:
+              - entity: sensor.cuisine_hilo_energy
+                name: Énergie utilisé
+              - entity: sensor.cuisine_hilo_energy_low
+                name: Énergie Bas
+              - entity: sensor.cuisine_hilo_energy_medium
+                name: Énergie Haut
+            grid_options:
+              columns: 12
+              rows: 2
+          - type: heading
+            heading_style: title
+            grid_options:
+              columns: full
+              rows: 1
+            heading: Salle d’eau
+            icon: mdi:toilet
+          - type: glance
+            entities:
+              - entity: sensor.salle_eau_hilo_energy
+                name: Énergie utilisé
+              - entity: sensor.salle_eau_hilo_energy_low
+                name: Énergie Bas
+              - entity: sensor.salle_eau_hilo_energy_medium
+                name: Énergie Haut
+            grid_options:
+              columns: 12
+              rows: 2
+      - type: grid
+        cards:
+          - type: heading
+            heading_style: title
+            grid_options:
+              columns: full
+              rows: 1
+            heading: Deuxième
+            icon: mdi:home-floor-2
+          - type: heading
+            heading_style: title
+            grid_options:
+              columns: full
+              rows: 1
+            heading: Chambre des maîtres
+            icon: mdi:bed-king
+          - type: glance
+            entities:
+              - entity: sensor.ch_maitres_hilo_energy
+                name: Énergie utilisé
+              - entity: sensor.ch_maitres_hilo_energy_low
+                name: Énergie Bas
+              - entity: sensor.ch_maitres_hilo_energy_medium
+                name: Énergie Haut
+            grid_options:
+              columns: 12
+              rows: 2
+          - type: heading
+            heading_style: title
+            grid_options:
+              columns: full
+              rows: 1
+            heading: Bureau
+            icon: mdi:desk
+          - type: glance
+            entities:
+              - entity: sensor.bureau_hilo_energy
+                name: Énergie utilisé
+              - entity: sensor.bureau_hilo_energy_low
+                name: Énergie Bas
+              - entity: sensor.bureau_hilo_energy_medium
+                name: Énergie Haut
+            grid_options:
+              columns: 12
+              rows: 2
+          - type: heading
+            heading_style: title
+            grid_options:
+              columns: full
+              rows: 1
+            heading: Salle de bain
+            icon: mdi:bathtub
+          - type: glance
+            entities:
+              - entity: sensor.salle_bain_hilo_energy
+                name: Énergie utilisé
+              - entity: sensor.salle_bain_hilo_energy_low
+                name: Énergie Bas
+              - entity: sensor.salle_bain_hilo_energy_medium
+                name: Énergie Haut
+            grid_options:
+              columns: 12
+              rows: 2
+          - type: heading
+            heading_style: title
+            grid_options:
+              columns: full
+              rows: 1
+            heading: Salle de repos
+            icon: mdi:chair-rolling
+          - type: glance
+            entities:
+              - entity: sensor.salle_repos_hilo_energy
+                name: Énergie utilisé
+              - entity: sensor.salle_repos_hilo_energy_low
+                name: Énergie Bas
+              - entity: sensor.salle_repos_hilo_energy_medium
+                name: Énergie Haut
+            grid_options:
+              columns: 12
+              rows: 2
+      - type: grid
+        cards:
+          - type: heading
+            heading_style: title
+            grid_options:
+              columns: full
+              rows: 1
+            heading: Sous-sol
+            icon: mdi:home-floor-0
+          - type: heading
+            heading_style: title
+            grid_options:
+              columns: full
+              rows: 1
+            heading: 'Salle familiale '
+            icon: mdi:account-group
+          - show_name: true
+            show_icon: true
+            show_state: true
+            type: glance
+            entities:
+              - entity: sensor.salle_familiale_hilo_energy
+                name: Énergie utilisé
+              - entity: sensor.salle_familiale_hilo_energy_low
+                name: Énergie Bas
+              - entity: sensor.salon_hilo_energy_medium
+                name: Énergie Haut
+            grid_options:
+              columns: 12
+              rows: 2
+          - type: heading
+            heading_style: title
+            grid_options:
+              columns: full
+              rows: 1
+            heading: Chambe des invités
+            icon: mdi:bed
+          - show_name: true
+            show_icon: true
+            show_state: true
+            type: glance
+            entities:
+              - entity: sensor.ch_invites_hilo_energy
+                name: Énergie utilisé
+              - entity: sensor.ch_invites_hilo_energy_low
+                name: Énergie Bas
+              - entity: sensor.ch_invites_hilo_energy_medium
+                name: Énergie Haut
+            grid_options:
+              columns: 12
+              rows: 2
+          - type: heading
+            heading_style: title
+            grid_options:
+              columns: full
+              rows: 1
+            heading: Atelier
+            icon: mdi:tools
+          - type: glance
+            entities:
+              - entity: sensor.atelier_hilo_energy
+                name: Énergie utilisé
+              - entity: sensor.atelier_hilo_energy_low
+                name: Énergie Bas
+              - entity: sensor.atelier_hilo_energy_medium
+                name: Énergie Haut
+            grid_options:
+              columns: 12
+              rows: 2
+ 

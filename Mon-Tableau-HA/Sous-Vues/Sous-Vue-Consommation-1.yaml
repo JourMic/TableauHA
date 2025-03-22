@@ -1,0 +1,230 @@
+title: Énergie actuellement
+path: Sous-vue-consommation-1
+icon: mdi:graph
+theme: !include ../Cartes/Carte-Theme.yaml
+subview: true
+type: sections
+max_columns: 2
+cards: []
+sections:
+  - type: grid
+    cards:
+      - type: heading
+        icon: mdi:fridge
+        heading: Consommation mensuel maison
+        heading_style: title
+        layout_options:
+          grid_columns: full
+          grid_rows: 1
+      - type: custom:sankey-chart
+        min_state: 0
+        show_names: true
+        show_icons: true
+        wide: false
+        sort_by: state
+        layout: auto
+        height: 450
+        unit_prefix: ""
+        round: 1
+        convert_units_to: ""
+        min_box_size: 20
+        min_box_distance: 5
+        show_states: true
+        show_units: true
+        sections:
+          - entities:
+              - type: entity
+                children:
+                  - climate.neviweb130_climate_atelier
+                  - climate.neviweb130_climate_salle_familiale
+                  - climate.neviweb130_climate_ch_invites
+                  - climate.neviweb130_climate_salon
+                  - climate.neviweb130_climate_cuisine
+                  - climate.neviweb130_climate_salle_eau
+                  - climate.neviweb130_climate_ch_maitres
+                  - climate.neviweb130_climate_bureau
+                  - climate.neviweb130_climate_salle_bain
+                  - climate.neviweb130_climate_salle_repos
+                  - switch.neviweb130_switch_ipad_ha
+                  - switch.neviweb130_switch_lampes_du_salon
+                  - switch.neviweb130_switch_ordinateur
+                  - switch.neviweb130_switch_echangeur_d_air
+                  - switch.neviweb130_switch_huche_salon
+                  - light.neviweb130_light_atelier
+                  - light.neviweb130_light_bureau
+                  - light.neviweb130_light_chambre_invites
+                  - light.neviweb130_light_cuisine
+                  - light.neviweb130_light_entree_arriere
+                  - light.neviweb130_light_galerie_arriere
+                  - light.neviweb130_light_garde_robe_bureau
+                  - light.neviweb130_light_salle_deau
+                entity_id: sensor.energie_mois_total
+                name: Maison
+                unit_of_measurement: Kwh
+                icon: mdi:home-lightning-bolt-outline
+          - entities:
+              - type: entity
+                children: []
+                entity_id: climate.neviweb130_climate_atelier
+                name: Atelier
+                attribute: monthly_kwh
+                icon: mdi:thermostat
+                color: red
+              - type: entity
+                children: []
+                entity_id: climate.neviweb130_climate_salle_familiale
+                attribute: monthly_kwh
+                name: Salle Familiale
+                icon: mdi:thermostat
+                color: red
+              - type: entity
+                children: []
+                entity_id: climate.neviweb130_climate_ch_invites
+                attribute: monthly_kwh
+                name: Chambre Invités
+                icon: mdi:thermostat
+                color: red
+              - type: entity
+                children: []
+                entity_id: climate.neviweb130_climate_salon
+                attribute: monthly_kwh
+                name: Salon
+                icon: mdi:thermostat
+                color: red
+              - type: entity
+                children: []
+                entity_id: climate.neviweb130_climate_cuisine
+                attribute: monthly_kwh
+                name: Cuisine
+                icon: mdi:thermostat
+                color: red
+              - type: entity
+                children: []
+                entity_id: climate.neviweb130_climate_salle_eau
+                attribute: monthly_kwh
+                name: Salle d’eau
+                icon: mdi:thermostat
+                color: red
+              - type: entity
+                children: []
+                entity_id: climate.neviweb130_climate_ch_maitres
+                attribute: monthly_kwh
+                name: Chanbre maîtres
+                icon: mdi:thermostat
+                color: red
+              - type: entity
+                children: []
+                entity_id: climate.neviweb130_climate_bureau
+                attribute: monthly_kwh
+                name: Bureau
+                icon: mdi:thermostat
+                color: red
+              - type: entity
+                children: []
+                entity_id: climate.neviweb130_climate_salle_bain
+                attribute: monthly_kwh
+                name: Salle de bain
+                icon: mdi:thermostat
+                color: red
+              - type: entity
+                children: []
+                entity_id: climate.neviweb130_climate_salle_repos
+                attribute: monthly_kwh
+                name: Salle de repos
+                icon: mdi:thermostat
+                color: red
+              - type: entity
+                children: []
+                entity_id: switch.neviweb130_switch_ipad_ha
+                attribute: monthly_kwh
+                name: iPad HA
+                icon: mdi:power-socket-us
+                color: orange
+              - type: entity
+                children: []
+                entity_id: switch.neviweb130_switch_lampes_du_salon
+                name: Lampes Salon
+                attribute: monthly_kwh
+                icon: mdi:power-socket-us
+                color: orange
+              - type: entity
+                children: []
+                entity_id: switch.neviweb130_switch_ordinateur
+                name: Ordinateur
+                attribute: monthly_kwh
+                icon: mdi:power-socket-us
+                color: orange
+              - type: entity
+                children: []
+                entity_id: switch.neviweb130_switch_huche_salon
+                name: Huche salon
+                attribute: monthly_kwh
+                icon: mdi:power-socket-us
+                color: orange
+              - type: entity
+                children: []
+                entity_id: light.neviweb130_light_atelier
+                name: Atelier
+                attribute: monthly_kwh
+                icon: mdi:light-switch-off
+                color: blue
+              - type: entity
+                children: []
+                entity_id: light.neviweb130_light_bureau
+                name: Bureau
+                attribute: monthly_kwh
+                icon: mdi:light-switch-off
+                color: blue
+              - type: entity
+                children: []
+                entity_id: light.neviweb130_light_chambre_invites
+                name: Bureau
+                attribute: monthly_kwh
+                icon: mdi:light-switch-off
+                color: blue
+              - type: entity
+                children: []
+                entity_id: light.neviweb130_light_cuisine
+                name: Cusine
+                attribute: monthly_kwh
+                icon: mdi:light-switch-off
+                color: blue
+              - type: entity
+                children: []
+                entity_id: light.neviweb130_light_entree_arriere
+                name: Entrée arrière
+                attribute: monthly_kwh
+                icon: mdi:light-switch-off
+                color: blue
+              - type: entity
+                children: []
+                entity_id: light.neviweb130_light_galerie_arriere
+                name: Galerie arrière
+                attribute: monthly_kwh
+                icon: mdi:light-switch-off
+                color: blue
+              - type: entity
+                children: []
+                entity_id: light.neviweb130_light_garde_robe_bureau
+                name: Garde-robes bureau
+                attribute: monthly_kwh
+                icon: mdi:light-switch-off
+                color: blue
+              - type: entity
+                children: []
+                entity_id: light.neviweb130_light_salle_deau
+                name: Salle d'eau
+                attribute: monthly_kwh
+                icon: mdi:light-switch-off
+                color: blue
+              - type: entity
+                children: []
+                entity_id: switch.neviweb130_switch_echangeur_d_air
+                name: Échangeur
+                attribute: monthly_kwh
+                icon: mdi:light-switch-off
+                color: blue
+        layout_options:
+          grid_columns: full
+          grid_rows: 8
+    column_span: 2
